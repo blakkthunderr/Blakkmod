@@ -1,0 +1,15 @@
+{
+  "Bloodthirst": {
+    "NAME": "Bloodthirst",
+    "DESCRIPTIONS": [
+      "Whenever you deal unblocked attack damage, heal 1 HP."
+    ]
+  },
+
+  "ThrowingArsenal": {
+    "NAME": "Throwing Arsenal",
+    "DESCRIPTIONS": [
+      "Attack cards cannot Exhaust."
+    ]
+  }
+  }

@@ -1,0 +1,83 @@
+{
+  "GoldMedallion": {
+    "NAME": "Gold Medallion",
+    "FLAVOR": "Don't let it get to your head.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of each turn. Upon defeating Elites, obtain 1 Pride."
+    ]
+  },
+
+  "Megaphone": {
+    "NAME": "Megaphone",
+    "FLAVOR": "Requires batteries.",
+    "DESCRIPTIONS": [
+      "Lose [E] at the start of each turn. The first card you play each turn is played twice."
+    ]
+  },
+
+  "YinYang": {
+    "NAME": "Yin-Yang",
+    "FLAVOR": "Perfectly balanced.",
+    "DESCRIPTIONS": [
+      "Every 2 turns, gain 2 [E]."
+    ]
+  },
+
+  "Ruby": {
+    "NAME": "Ruby",
+    "FLAVOR": "Omega.",
+    "DESCRIPTIONS": [
+      "Whenever you play 7 attacks, add a random attack to your hand and gain 2 [E]."
+    ]
+  },
+
+  "Emerald": {
+    "NAME": "Emerald",
+    "FLAVOR": "Delta.",
+    "DESCRIPTIONS": [
+      "Whenever you play 6 skills, add a random skill to your hand and gain 2 [E]."
+    ]
+  },
+
+  "Sapphire": {
+    "NAME": "Sapphire",
+    "FLAVOR": "Alpha.",
+    "DESCRIPTIONS": [
+      "Whenever you play 4 powers, add a random power to your hand and gain 2 [E]."
+    ]
+  },
+
+  "TwilightShard": {
+  "NAME": "Twilight Shard",
+  "FLAVOR": "Fleeting light shines from this stone.",
+  "DESCRIPTIONS": [
+    "Gain [E] every turn for 20 turns."
+  ]
+},
+
+  "MonkeysToyBox": {
+    "NAME": "Monkey's Toy Box",
+    "FLAVOR": "You can find all kinds of wacky trinkets in here!",
+    "DESCRIPTIONS": [
+      "Upon pickup, obtain 3 common relics."
+    ]
+  },
+
+  "ChipBag": {
+    "NAME": "Bag of Chips",
+    "FLAVOR": "Addictive.",
+    "DESCRIPTIONS": [
+      "At the start of 10 combats, heal 4 HP."
+    ]
+  },
+
+  "TheDonut": {
+    "NAME": "The Donut",
+    "FLAVOR": "Beware, eat too many of these and you'll get sleepy.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of each turn. Start each combat with 2 less Dexterity."
+    ]
+  }
+
+
+  }
