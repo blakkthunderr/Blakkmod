@@ -13,8 +13,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AngerPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import examplemod.events.MonkeyBusiness;
 
 public class Monkey extends AbstractMonster
 {
@@ -35,7 +37,7 @@ public class Monkey extends AbstractMonster
     private static final byte BULL_RUSH = 1;
     private static final byte SKULL_BASH = 2;
     private static final byte BELLOW = 3;
-    private static final int ANGRY_LEVEL = 1;
+    private static final int ANGRY_LEVEL = 3;
     private boolean usedBellow;
 
     public Monkey() {
@@ -79,7 +81,7 @@ public class Monkey extends AbstractMonster
             case BELLOW: {
 
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, Monkey.DIALOG[0], 1.0f, 3.0f));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new AngerPower(this, Monkey.ANGRY_LEVEL), Monkey.ANGRY_LEVEL));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, Monkey.ANGRY_LEVEL), Monkey.ANGRY_LEVEL));
                 break;
             }
             case SKULL_BASH: {
@@ -116,14 +118,17 @@ public class Monkey extends AbstractMonster
             this.setMove((byte)1, Intent.ATTACK, this.damage.get(0).base);
         }
     }
-    /*
+
     @Override
     public void die() {
+
         super.die();
         AbstractDungeon.scene.fadeInAmbiance();
         CardCrawlGame.music.fadeOutTempBGM();
+
+
     }
-    */
+
     static {
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings("Monkey");
         NAME = Monkey.monsterStrings.NAME;

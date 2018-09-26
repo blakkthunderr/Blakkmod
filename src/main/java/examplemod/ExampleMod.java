@@ -30,6 +30,7 @@ import examplemod.cards.*;
 import examplemod.events.MonkeyBusiness;
 import examplemod.monsters.GremlinKing;
 import examplemod.monsters.Monkey;
+import examplemod.monsters.Pilcrow;
 import examplemod.monsters.TwilightGuardian;
 import examplemod.relics.*;
 
@@ -92,8 +93,16 @@ public class ExampleMod implements PostExhaustSubscriber,
 
         }));
 
+        BaseMod.addMonster("Pilcrow", () -> new MonsterGroup(new AbstractMonster[]{
+                new Pilcrow(),
+
+        }));
+
 
         BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo("Monkey", 0));
+
+        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo("Pilcrow", 1));
+
 
         BaseMod.addMonster("TwilightGuardian", () -> new MonsterGroup(new AbstractMonster[]{
                 new TwilightGuardian(),
@@ -150,6 +159,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addRelic(new TwilightShard(), RelicType.SHARED);
         BaseMod.addRelic(new MonkeysToyBox(), RelicType.SHARED);
         BaseMod.addRelic(new ChipBag(), RelicType.SHARED);
+        BaseMod.addRelic(new RappingBowl(), RelicType.SHARED);
 }
 
     @Override

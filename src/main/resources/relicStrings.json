@@ -77,6 +77,14 @@
     "DESCRIPTIONS": [
       "Gain [E] at the start of each turn. Start each combat with 2 less Dexterity."
     ]
+  },
+
+  "RappingBowl": {
+    "NAME": "Rapping Bowl",
+    "FLAVOR": "The less lines you havta spit, the ezier you can freestyle.",
+    "DESCRIPTIONS": [
+      "Start each combat with 5 Strength and Dexterity. Lose 1 Strength and Dexterity for every 5 cards in your deck."
+    ]
   }
 
 

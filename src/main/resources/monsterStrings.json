@@ -36,5 +36,18 @@
     "DIALOG": [
       "HAHAHA! YOU WILL NEVER TOUCH ME, PEASANT!"
     ]
+  },
+
+  "Pilcrow": {
+    "NAME": "Pilcrow",
+    "MOVES": [
+      "Wither",
+      "Intro",
+      "Conclusion"
+
+    ],
+    "DIALOG": [
+      "This is your end."
+    ]
   }
   }

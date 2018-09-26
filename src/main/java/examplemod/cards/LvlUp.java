@@ -19,7 +19,8 @@ public class LvlUp
     public static final String NAME = "Level Up";
     public static final String DESCRIPTION = "Gain 1 Strength and 1 Dexterity.";
     public static final String IMG_PATH = "img/LvlUp.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
+
 
 
 
@@ -29,7 +30,7 @@ public class LvlUp
                 CardRarity.RARE, CardTarget.SELF);
 
         this.baseMagicNumber = 1;
-        this.magicNumber = this.baseMagicNumber;
+
 
         this.setBackgroundTexture("img/custom_background_small.png", "img/custom_background_large.png");
 
@@ -41,8 +42,8 @@ public class LvlUp
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new InflameEffect(p), 1.0F));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.baseMagicNumber), this.baseMagicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 1), 1));
     }
 
     @Override
@@ -55,7 +56,9 @@ public class LvlUp
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBaseCost(1);
+            this.rawDescription = "Gain 2 Strength and 1 Dexterity.";
+            this.baseMagicNumber = 2;
+            this.initializeDescription();
 
         }
     }

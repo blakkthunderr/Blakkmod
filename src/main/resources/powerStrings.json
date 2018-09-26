@@ -11,5 +11,12 @@
     "DESCRIPTIONS": [
       "Attack cards cannot Exhaust."
     ]
+  },
+
+  "Complexity": {
+    "NAME": "Complexity",
+    "DESCRIPTIONS": [
+      "Whenever you play a Skill, this enemy loses 1 Strength."
+    ]
   }
   }
