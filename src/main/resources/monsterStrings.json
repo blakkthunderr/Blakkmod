@@ -49,5 +49,18 @@
     "DIALOG": [
       "This is your end."
     ]
+  },
+
+  "Paranoia": {
+    "NAME": "Paranoia",
+    "MOVES": [
+      "Illusion",
+      "Madness"
+
+
+    ],
+    "DIALOG": [
+      "..."
+    ]
   }
   }

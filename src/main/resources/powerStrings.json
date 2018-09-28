@@ -16,7 +16,7 @@
   "Complexity": {
     "NAME": "Complexity",
     "DESCRIPTIONS": [
-      "Whenever you play a Skill, this enemy loses 1 Strength."
+      "Whenever you play a Skill, this enemy loses 1 Strength for this turn."
     ]
   }
   }

@@ -81,9 +81,25 @@
 
   "RappingBowl": {
     "NAME": "Rapping Bowl",
-    "FLAVOR": "The less lines you havta spit, the ezier you can freestyle.",
+    "FLAVOR": "The less in the way, the quicker you can flow, yo.",
     "DESCRIPTIONS": [
       "Start each combat with 5 Strength and Dexterity. Lose 1 Strength and Dexterity for every 5 cards in your deck."
+    ]
+  },
+
+  "CigarettePack": {
+    "NAME": "Cigarette Pack",
+    "FLAVOR": "Not great for the lungs, but people will think you're cooler.",
+    "DESCRIPTIONS": [
+      "Upon pickup, lose 5 Max HP. All enemies start with -1 strength."
+    ]
+  },
+
+  "CowardCrown": {
+    "NAME": "Coward Crown",
+    "FLAVOR": "Worn by a very cowardly king..",
+    "DESCRIPTIONS": [
+      "Start each combat with 2 Metallicize."
     ]
   }
 

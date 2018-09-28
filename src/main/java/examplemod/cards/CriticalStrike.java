@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class CriticalStrike
@@ -21,7 +22,7 @@ public class CriticalStrike
     public static final String IMG_PATH = "img/CriticalStrike.png";
     private static final int COST = 1;
     private static final int ATTACK_DMG = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+
 
 
 
@@ -42,11 +43,20 @@ public class CriticalStrike
         this.setBannerTexture("img/custom_banner_large.png", "img/custom_banner_large.png");
     }
 
+
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (mo.hasPower (WeakPower.POWER_ID)){
+            this.baseDamage +=  (mo.getPower(WeakPower.POWER_ID).amount*this.magicNumber);
+        }
+        super.calculateCardDamage(mo);
+        this.baseDamage = ATTACK_DMG;
+    }
+
+
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower (WeakPower.POWER_ID)){
-            this.damage = ATTACK_DMG +  (m.getPower(WeakPower.POWER_ID).amount*3);
-        }
+
 
         AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
                 new DamageInfo(p, this.damage, this.damageTypeForTurn),
@@ -65,7 +75,9 @@ public class CriticalStrike
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(UPGRADE_PLUS_DMG);
+            this.rawDescription = "Deal !D! damage. Does 4 more damage for every stack of Weak on the enemy.";
+            this.baseMagicNumber = 4;
+            this.initializeDescription();
 
         }
     }

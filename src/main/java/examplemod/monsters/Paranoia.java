@@ -5,30 +5,36 @@ import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.colorless.Madness;
+import com.megacrit.cardcrawl.cards.curses.Doubt;
+import com.megacrit.cardcrawl.cards.curses.Normality;
+import com.megacrit.cardcrawl.cards.curses.Pain;
+import com.megacrit.cardcrawl.cards.curses.Regret;
 import com.megacrit.cardcrawl.cards.status.Burn;
-import com.megacrit.cardcrawl.cards.status.Slimed;
+import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import examplemod.powers.ComplexityPower;
 
-public class Pilcrow extends AbstractMonster
+public class Paranoia extends AbstractMonster
 {
-    public static final String ID = "Pilcrow";
+    public static final String ID = "Paranoia";
     private static final MonsterStrings monsterStrings;
     public static final String NAME;
     public static final String[] MOVES;
     public static final String[] DIALOG;
     private static final int HP = 175;
     private static final int A_HP = 200;
-    private static final int BASH_DMG = 11;
-    private static final int RUSH_DMG = 10;
-    private static final int A_BASH_DMG = 13;
-    private static final int A_RUSH_DMG = 12;
+    private static final int BASH_DMG = 20;
+    private static final int RUSH_DMG = 20;
+    private static final int A_BASH_DMG = 30;
+    private static final int A_RUSH_DMG = 30;
     private static final int DEBUFF_AMT = 2;
     private static final int METAL_AMT = 1;
     private static final int A_METAL_AMT = 2;
@@ -46,17 +52,17 @@ public class Pilcrow extends AbstractMonster
     private static final int ANGRY_LEVEL = 3;
     private boolean usedBellow;
 
-    public Pilcrow() {
-        super(Pilcrow.NAME, "Pilcrow", 175, -70.0f, -10.0f, 270.0f, 380.0f, "img/Pilcrow.png");
+    public Paranoia() {
+        super(Paranoia.NAME, "Paranoia", 175, -70.0f, -10.0f, 270.0f, 380.0f, "img/Paranoia.png");
         this.intentOffsetX = +10.0f * Settings.scale;
         this.type = EnemyType.ELITE;
         this.dialogX = -60.0f * Settings.scale;
         this.dialogY = 50.0f * Settings.scale;
         if (AbstractDungeon.ascensionLevel >= 8) {
-            this.setHp(Pilcrow.A_HP);
+            this.setHp(Paranoia.A_HP);
         }
         else {
-            this.setHp(Pilcrow.HP);
+            this.setHp(Paranoia.HP);
         }
         if (AbstractDungeon.ascensionLevel >= 3) {
             this.bashDmg = A_BASH_DMG;
@@ -70,13 +76,13 @@ public class Pilcrow extends AbstractMonster
         if (AbstractDungeon.ascensionLevel >= 18) {
             this.metalAmt = A_METAL_AMT;
             this.thornsAmt = A_THORNS_AMT;
-            this.applyFrail = 2;
+            this.applyFrail = 3;
 
         }
         else {
             this.metalAmt = METAL_AMT;
             this.thornsAmt = THORNS_AMT;
-            this.applyFrail = 1;
+            this.applyFrail = 2;
 
         }
         this.damage.add(new DamageInfo(this, this.rushDmg));
@@ -89,8 +95,8 @@ public class Pilcrow extends AbstractMonster
     @Override
     public void usePreBattleAction() {
 
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePower(this, this.applyFrail), this.applyFrail));
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ComplexityPower(this, 1), 1));
 
     }
 
@@ -102,37 +108,29 @@ public class Pilcrow extends AbstractMonster
             case BELLOW: { // move 2, byte 3
 
                 AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new WeakPower(AbstractDungeon.player, applyFrail, true), applyFrail));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAndDeckAction(new Madness()));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Regret(), 1));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAndDeckAction(new Doubt()));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAndDeckAction(new Dazed()));
 
 
-                this.setMove(Pilcrow.MOVES[1], (byte)2, Intent.ATTACK, this.rushDmg, 2, true);
+
+
+                this.setMove(Paranoia.MOVES[1], (byte)2, Intent.ATTACK, this.rushDmg, 1, false);
                 break;
             }
+
             case SKULL_BASH: { // move 0, byte 2
-                for(int i = 0; i < 2; ++i) {
+
                     AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                }
 
-                this.setMove(Pilcrow.MOVES[2], (byte)1, Intent.ATTACK_BUFF, this.bashDmg, 3, true);
+
+                this.setMove(Paranoia.MOVES[0], (byte)3, Intent.STRONG_DEBUFF, this.bashDmg, 3, true);
                 break;
 
             }
-            case BULL_RUSH: { // move 1, byte 1
-                AbstractDungeon.actionManager.addToBottom(new TalkAction(this, Pilcrow.DIALOG[0], 1.0f, 3.0f));
-                for(int i = 0; i < 3; ++i) {
-                    AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.FIRE));
-                }
 
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, metalAmt), metalAmt));
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Burn(), 1+this.applyFrail));
-
-                this.setMove(Pilcrow.MOVES[0], (byte)3, Intent.ATTACK_DEBUFF, this.rushDmg, 1, false);
-                break;
-
-            }
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
@@ -142,7 +140,7 @@ public class Pilcrow extends AbstractMonster
     protected void getMove(final int num) {
         if (!this.usedBellow) {
             this.usedBellow = true;
-            this.setMove(Pilcrow.MOVES[0], (byte)3, Intent.ATTACK_DEBUFF, this.rushDmg, 1, false);
+            this.setMove(Paranoia.MOVES[0], (byte)3, Intent.STRONG_DEBUFF, this.rushDmg, 1, false);
             return;
 
         }/*
@@ -166,9 +164,9 @@ public class Pilcrow extends AbstractMonster
     }
     */
     static {
-        monsterStrings = CardCrawlGame.languagePack.getMonsterStrings("Pilcrow");
-        NAME = Pilcrow.monsterStrings.NAME;
-        MOVES = Pilcrow.monsterStrings.MOVES;
-        DIALOG = Pilcrow.monsterStrings.DIALOG;
+        monsterStrings = CardCrawlGame.languagePack.getMonsterStrings("Paranoia");
+        NAME = Paranoia.monsterStrings.NAME;
+        MOVES = Paranoia.monsterStrings.MOVES;
+        DIALOG = Paranoia.monsterStrings.DIALOG;
     }
 }
