@@ -27,12 +27,12 @@ public class Paranoia extends AbstractMonster
     public static final String NAME;
     public static final String[] MOVES;
     public static final String[] DIALOG;
-    private static final int HP = 250;
-    private static final int A_HP = 300;
-    private static final int BASH_DMG = 20;
-    private static final int RUSH_DMG = 20;
-    private static final int A_BASH_DMG = 30;
-    private static final int A_RUSH_DMG = 30;
+    private static final int HP = 999;
+    private static final int A_HP = 999;
+    private static final int BASH_DMG = 30;
+    private static final int RUSH_DMG = 30;
+    private static final int A_BASH_DMG = 40;
+    private static final int A_RUSH_DMG = 40;
     private static final int DEBUFF_AMT = 2;
     private static final int METAL_AMT = 1;
     private static final int A_METAL_AMT = 2;
@@ -93,7 +93,6 @@ public class Paranoia extends AbstractMonster
     @Override
     public void usePreBattleAction() {
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePlayerPower(this, this.applyFrail), this.applyFrail));
 
 
     }
@@ -110,7 +109,9 @@ public class Paranoia extends AbstractMonster
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Regret(), 1));
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAndDeckAction(new Doubt()));
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAndDeckAction(new Dazed()));
+                ///AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePlayerPower(this, 1), 1));
 
+                this.setHp(this.currentHealth/2);
 
 
 
@@ -122,6 +123,7 @@ public class Paranoia extends AbstractMonster
 
                     AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                     this.setHp(this.currentHealth/2);
 
 
                 this.setMove(Paranoia.MOVES[2], (byte)1, Intent.STRONG_DEBUFF, this.bashDmg, 3, true);
@@ -133,6 +135,8 @@ public class Paranoia extends AbstractMonster
 
                 AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new ConfusionPower(AbstractDungeon.player)));
+                ///AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePlayerPower(this, 1), 1));
+                this.setHp(this.currentHealth/2);
 
 
 

@@ -27,6 +27,7 @@ import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import examplemod.cards.*;
+import examplemod.events.CoolPool;
 import examplemod.events.MonkeyBusiness;
 import examplemod.monsters.*;
 import examplemod.relics.*;
@@ -62,6 +63,9 @@ public class ExampleMod implements PostExhaustSubscriber,
     @Override
     public void receivePostInitialize() {
         BaseMod.addEvent(MonkeyBusiness.ID, MonkeyBusiness.class, Exordium.ID);
+
+        BaseMod.addEvent(CoolPool.ID, CoolPool.class, TheCity.ID);
+
 
         // Add a multi-monster encounter
         BaseMod.addMonster("LordSnecko", () -> new MonsterGroup(new AbstractMonster[]{
@@ -159,6 +163,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addRelic(new Megaphone(), RelicType.SHARED);
         BaseMod.addRelic(new YinYang(), RelicType.SHARED);
         BaseMod.addRelic(new TheDonut(), RelicType.SHARED);
+        BaseMod.addRelic(new NeowsEye(), RelicType.SHARED);
 
         BaseMod.addRelic(new Ruby(), RelicType.RED);
         BaseMod.addRelic(new Emerald(), RelicType.GREEN);

@@ -101,6 +101,14 @@
     "DESCRIPTIONS": [
       "Start each combat with 2 Metallicize."
     ]
+  },
+
+  "NeowsEye": {
+    "NAME": "Neow's Eye",
+    "FLAVOR": "How did that get here?",
+    "DESCRIPTIONS": [
+      "Upon pickup, obtain a random Rare relic."
+    ]
   }
 
 
