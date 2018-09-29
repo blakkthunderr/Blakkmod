@@ -146,6 +146,10 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addCard(new ShadowCall()); //Skill
         BaseMod.addCard(new Bloodthirst()); //power
         BaseMod.addCard(new ThrowingArsenal()); //power
+        BaseMod.addCard(new DeadlyAura()); //skill
+
+        BaseMod.addCard(new Rust()); //curse
+
     }
 
     @Override

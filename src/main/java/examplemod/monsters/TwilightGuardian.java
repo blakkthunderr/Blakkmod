@@ -92,6 +92,8 @@ public class TwilightGuardian extends AbstractMonster
         UnlockTracker.markBossAsSeen("TWILIGHT");
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new MetallicizePower(this, metalAmt), metalAmt));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ThornsPower(this, thornsAmt), thornsAmt));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
+
     }
 
     @Override
@@ -102,6 +104,8 @@ public class TwilightGuardian extends AbstractMonster
                 //AbstractDungeon.actionManager.addToBottom(new TalkAction(this, TwilightGuardian.DIALOG[0], 1.0f, 3.0f));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 5), 5));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ThornsPower(this, thornsAmt), thornsAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
+
                 this.setMove(TwilightGuardian.MOVES[0], (byte)2, Intent.ATTACK, this.bashDmg, 1, false);
                 break;
             }

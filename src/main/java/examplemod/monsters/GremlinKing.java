@@ -102,7 +102,7 @@ public class GremlinKing extends AbstractMonster
             case BELLOW: { // move 2, byte 3
 
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, GremlinKing.DIALOG[0], 1.0f, 3.0f));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, thornsAmt/4), thornsAmt/4));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, thornsAmt/2), thornsAmt/2));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new DexterityPower(this, thornsAmt/2), thornsAmt/2));
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 10+this.dexAmt));
                 this.dexAmt += this.thornsAmt;
@@ -111,6 +111,8 @@ public class GremlinKing extends AbstractMonster
             }
             case SKULL_BASH: { // move 0, byte 2
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this, this, 20+this.dexAmt));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ArtifactPower(this, 1), 1));
+
                 this.setMove(GremlinKing.MOVES[0], (byte)3, Intent.DEFEND_BUFF, this.bashDmg, 1, false);
                 break;
 

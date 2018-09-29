@@ -17,9 +17,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.IntangiblePower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 import examplemod.powers.ComplexityPower;
 
 public class Paranoia extends AbstractMonster
@@ -29,8 +27,8 @@ public class Paranoia extends AbstractMonster
     public static final String NAME;
     public static final String[] MOVES;
     public static final String[] DIALOG;
-    private static final int HP = 175;
-    private static final int A_HP = 200;
+    private static final int HP = 250;
+    private static final int A_HP = 300;
     private static final int BASH_DMG = 20;
     private static final int RUSH_DMG = 20;
     private static final int A_BASH_DMG = 30;
@@ -95,7 +93,7 @@ public class Paranoia extends AbstractMonster
     @Override
     public void usePreBattleAction() {
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePower(this, this.applyFrail), this.applyFrail));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new IntangiblePlayerPower(this, this.applyFrail), this.applyFrail));
 
 
     }
@@ -126,10 +124,23 @@ public class Paranoia extends AbstractMonster
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
 
-                this.setMove(Paranoia.MOVES[0], (byte)3, Intent.STRONG_DEBUFF, this.bashDmg, 3, true);
+                this.setMove(Paranoia.MOVES[2], (byte)1, Intent.STRONG_DEBUFF, this.bashDmg, 3, true);
                 break;
 
             }
+
+            case BULL_RUSH: { // move 2, byte 3
+
+                AbstractDungeon.actionManager.addToBottom(new AnimateSlowAttackAction(this));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, this, new ConfusionPower(AbstractDungeon.player)));
+
+
+
+
+                this.setMove(Paranoia.MOVES[0], (byte)3, Intent.STRONG_DEBUFF, this.rushDmg, 1, false);
+                break;
+            }
+
 
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
