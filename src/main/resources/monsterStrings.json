@@ -62,5 +62,19 @@
     "DIALOG": [
       "..."
     ]
+  },
+
+  "RustBeast": {
+    "NAME": "Rust Beast",
+    "MOVES": [
+      "Claw",
+      "Scrape",
+      "Corrode",
+      "Roar"
+
+    ],
+    "DIALOG": [
+      "Grrrr..."
+    ]
   }
   }

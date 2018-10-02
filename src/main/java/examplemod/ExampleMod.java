@@ -68,14 +68,14 @@ public class ExampleMod implements PostExhaustSubscriber,
 
 
         // Add a multi-monster encounter
-        BaseMod.addMonster("LordSnecko", () -> new MonsterGroup(new AbstractMonster[]{
-                new Snecko(),
-                new Healer(-300, 0)
+        BaseMod.addMonster("RustBeast", () -> new MonsterGroup(new AbstractMonster[]{
+                new RustBeast(),
+
         }));
 
-        BaseMod.addBoss(Exordium.ID, "LordSnecko",
-                "img/LordSnecko.png",
-                "img/LordSnecko.png");
+        BaseMod.addBoss(Exordium.ID, "RustBeast",
+                "img/RustBeastPic.png",
+                "img/RustBeastPic.png");
 
         // Add a multi-monster encounter
         BaseMod.addMonster("GremlinKing", () -> new MonsterGroup(new AbstractMonster[]{
@@ -164,6 +164,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addRelic(new YinYang(), RelicType.SHARED);
         BaseMod.addRelic(new TheDonut(), RelicType.SHARED);
         BaseMod.addRelic(new NeowsEye(), RelicType.SHARED);
+        BaseMod.addRelic(new BlakkSword(), RelicType.SHARED);
 
         BaseMod.addRelic(new Ruby(), RelicType.RED);
         BaseMod.addRelic(new Emerald(), RelicType.GREEN);

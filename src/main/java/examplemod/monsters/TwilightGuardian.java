@@ -132,6 +132,16 @@ public class TwilightGuardian extends AbstractMonster
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
 
+    @Override
+    public void die() {
+        this.useFastShakeAnimation(5.0F);
+        CardCrawlGame.screenShake.rumble(4.0F);
+        ++this.deathTimer;
+        super.die();
+        this.onBossVictoryLogic();
+
+    }
+
 
     @Override
     protected void getMove(final int num) {

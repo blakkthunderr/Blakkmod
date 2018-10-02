@@ -1,5 +1,6 @@
 package examplemod.relics;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -23,7 +24,7 @@ public class NeowsEye extends AbstractRelic {
 
         AbstractDungeon.combatRewardScreen.open();
         AbstractDungeon.combatRewardScreen.rewards.clear();
-        AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(AbstractDungeon.returnRandomScreenlessRelic(RelicTier.RARE)));
+        AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(AbstractDungeon.returnRandomScreenlessRelic(RelicTier.BOSS)));
         AbstractDungeon.combatRewardScreen.positionRewards();
         AbstractDungeon.overlayMenu.proceedButton.setLabel("Continue");
     }
