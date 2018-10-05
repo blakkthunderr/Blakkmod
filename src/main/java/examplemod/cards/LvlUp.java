@@ -27,7 +27,7 @@ public class LvlUp
     public LvlUp() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, CardColor.BLUE,
-                CardRarity.RARE, CardTarget.SELF);
+                CardRarity.UNCOMMON, CardTarget.SELF);
 
         this.baseMagicNumber = 1;
 

@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class CriticalStrike
         extends CustomCard {
-    public static final String ID = "CriticalStrike";
+    public static final String ID = "Critical Strike";
     public static final String NAME = "Critical Strike";
     public static final String DESCRIPTION = "Deal !D! damage. Does 3 more damage for every stack of Weak on the enemy.";
     public static final String IMG_PATH = "img/CriticalStrike.png";

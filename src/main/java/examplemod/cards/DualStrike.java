@@ -13,7 +13,7 @@ import basemod.abstracts.CustomCard;
 
 public class DualStrike
         extends CustomCard {
-    public static final String ID = "DualStrike";
+    public static final String ID = "Dual Strike";
     public static final String NAME = "Dual Strike";
     public static final String DESCRIPTION = "Deal !D! damage.";
     public static final String IMG_PATH = "img/DualStrike.png";

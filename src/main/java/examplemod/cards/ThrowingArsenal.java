@@ -15,7 +15,7 @@ public class ThrowingArsenal
     public static final String NAME = "Throwing Arsenal";
     public static final String DESCRIPTION = "Attacks that would Exhaust no longer do.";
     public static final String IMG_PATH = "img/ThrowingArsenal.png";
-    private static final int COST = 3;
+    private static final int COST = 2;
 
 
 
@@ -48,7 +48,9 @@ public class ThrowingArsenal
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBaseCost(2);
+            this.isInnate = true;
+            this.rawDescription = "Innate. Attacks that would Exhaust no longer do.";
+            this.initializeDescription();
 
         }
     }
