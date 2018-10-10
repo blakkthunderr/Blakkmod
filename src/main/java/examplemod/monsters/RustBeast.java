@@ -25,10 +25,10 @@ public class RustBeast extends AbstractMonster
     public static final String NAME;
     public static final String[] MOVES;
     public static final String[] DIALOG;
-    private static final int HP = 230;
-    private static final int A_HP = 260;
-    private static final int BASH_DMG = 6;
-    private static final int RUSH_DMG = 5;
+    private static final int HP = 250;
+    private static final int A_HP = 270;
+    private static final int BASH_DMG = 8;
+    private static final int RUSH_DMG = 6;
     private static final int A_BASH_DMG = 12;
     private static final int A_RUSH_DMG = 8;
     private static final int DEBUFF_AMT = 2;
@@ -107,7 +107,7 @@ public class RustBeast extends AbstractMonster
                 AbstractDungeon.actionManager.addToBottom(new TalkAction(this, RustBeast.DIALOG[0], 1.0f, 3.0f));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new StrengthPower(this, this.thornsAmt), this.thornsAmt));
 
-                this.setMove(RustBeast.MOVES[0], (byte)2, Intent.ATTACK, this.bashDmg, 1, false);
+                this.setMove(RustBeast.MOVES[0], (byte)2, Intent.ATTACK_DEBUFF, this.bashDmg, 1, false);
                 break;
             }
             case SKULL_BASH: {

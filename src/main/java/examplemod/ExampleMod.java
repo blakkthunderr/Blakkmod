@@ -147,6 +147,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addCard(new GlassHammer()); //Attack
         BaseMod.addCard(new CriticalStrike()); //Attack
         BaseMod.addCard(new LvlUp()); //Skill
+        BaseMod.addCard(new BlackThunder()); //Skill
         BaseMod.addCard(new ShadowCall()); //Skill
         BaseMod.addCard(new Bloodthirst()); //power
         BaseMod.addCard(new ThrowingArsenal()); //power

@@ -1,32 +1,27 @@
 package examplemod.cards;
 
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Dark;
-import com.megacrit.cardcrawl.orbs.Frost;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import com.megacrit.cardcrawl.orbs.Lightning;
 
-public class ShadowCall
+public class BlackThunder
         extends CustomCard {
-    public static final String ID = "ShadowCall";
-    public static final String NAME = "Shadow Call";
-    public static final String DESCRIPTION = "Channel 1 Dark. Exhaust.";
-    public static final String IMG_PATH = "img/ShadowCall.png";
-    private static final int COST = 1;
+    public static final String ID = "BlackThunder";
+    public static final String NAME = "Black Thunder";
+    public static final String DESCRIPTION = "Channel 3 Lightning and 1 Dark. Exhaust.";
+    public static final String IMG_PATH = "img/BlackThunder.png";
+    private static final int COST = 3;
 
 
 
-    public ShadowCall() {
+    public BlackThunder() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 CardType.SKILL, CardColor.BLUE,
-                CardRarity.COMMON, CardTarget.SELF);
+                CardRarity.RARE, CardTarget.SELF);
         this.exhaust = true;
 
 
@@ -38,13 +33,21 @@ public class ShadowCall
     }
 
     @Override
+
     public void use(AbstractPlayer p, AbstractMonster m) {
+
+
+        AbstractDungeon.player.channelOrb(new Lightning());
+        AbstractDungeon.player.channelOrb(new Lightning());
+        AbstractDungeon.player.channelOrb(new Lightning());
+
         AbstractDungeon.player.channelOrb(new Dark());
+
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new ShadowCall();
+        return new BlackThunder();
     }
 
 
@@ -52,9 +55,7 @@ public class ShadowCall
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.isInnate = true;
-            this.rawDescription = "Innate. Channel 1 Dark. Exhaust.";
-            this.initializeDescription();
+            this.upgradeBaseCost(2);
 
         }
     }

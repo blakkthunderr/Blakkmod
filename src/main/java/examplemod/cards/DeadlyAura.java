@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,7 +19,7 @@ public class DeadlyAura
         extends CustomCard {
     public static final String ID = "DeadlyAura";
     public static final String NAME = "Deadly Aura";
-    public static final String DESCRIPTION = "Unplayable. At the end of your turn, deal !D! damage to ALL enemies.";
+    public static final String DESCRIPTION = "At the end of your turn, deal !D! damage to ALL enemies.";
     public static final String IMG_PATH = "img/DeadlyAura.png";
     private static final int COST = -2;
     private static final int ATTACK_DMG = 5;
@@ -41,17 +42,21 @@ public class DeadlyAura
 
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-    }
+    public void triggerOnEndOfTurnForPlayingCard(){
 
-        @Override
-    public void triggerOnEndOfPlayerTurn() {
         super.triggerOnEndOfPlayerTurn();
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(AbstractDungeon.player,  this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 
     }
 
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+
+            AbstractDungeon.actionManager.addToBottom(new UseCardAction(this));
+
+
+    }
 
 
 
