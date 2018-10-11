@@ -3,7 +3,7 @@
   "name": "Blakk Mod",
   "author_list": ["blakkthunderr"],
   "description": "A mod that adds in cards, relics, monsters, and more.",
-  "version": "1.6",
+  "version": "1.8",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/blakkthunderr/BlakkMod/releases/latest"
 }
