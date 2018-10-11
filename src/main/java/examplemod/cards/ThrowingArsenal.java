@@ -13,7 +13,7 @@ public class ThrowingArsenal
         extends CustomCard {
     public static final String ID = "ThrowingArsenal";
     public static final String NAME = "Throwing Arsenal";
-    public static final String DESCRIPTION = "Attacks that would Exhaust no longer do.";
+    public static final String DESCRIPTION = "Whenever you play an Attack that Exhausts, add a copy of it to your draw pile.";
     public static final String IMG_PATH = "img/ThrowingArsenal.png";
     private static final int COST = 2;
 
@@ -49,7 +49,7 @@ public class ThrowingArsenal
         if (!this.upgraded) {
             this.upgradeName();
             this.isInnate = true;
-            this.rawDescription = "Innate. Attacks that would Exhaust no longer do.";
+            this.rawDescription = "Innate. Whenever you play an Attack that Exhausts, add a copy of it to your draw pile.";
             this.initializeDescription();
 
         }

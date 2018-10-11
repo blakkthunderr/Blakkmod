@@ -8,6 +8,8 @@ package examplemod.powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -52,8 +54,11 @@ public class ThrowingArsenalPower extends AbstractPower
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK) {
-            this.flash();
-            action.exhaustCard = false;
+            if (card.exhaust || card.exhaustOnUseOnce) {
+                this.flash();
+
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(card.makeStatEquivalentCopy(), 1, true, false));
+            }
         }
 
     }

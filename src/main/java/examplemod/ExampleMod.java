@@ -17,6 +17,10 @@ import com.megacrit.cardcrawl.monsters.city.Healer;
 import com.megacrit.cardcrawl.monsters.city.Snecko;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinNob;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
+
+
+
 
 import basemod.BaseMod;
 import basemod.interfaces.PostBattleSubscriber;
@@ -151,6 +155,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addCard(new ShadowCall()); //Skill
         BaseMod.addCard(new Bloodthirst()); //power
         BaseMod.addCard(new ThrowingArsenal()); //power
+        BaseMod.addCard(new SmokeBomb()); //skill
         BaseMod.addCard(new DeadlyAura()); //skill
 
         BaseMod.addCard(new Rust()); //curse
@@ -202,3 +207,4 @@ public class ExampleMod implements PostExhaustSubscriber,
     }
 
 }
+
