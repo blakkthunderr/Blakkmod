@@ -32,7 +32,7 @@ public class Sapphire extends AbstractRelic {
                 this.counter = 0;
                 this.flash();
                 AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                AbstractCard c = AbstractDungeon.returnTrulyRandomCard(AbstractCard.CardType.POWER, AbstractDungeon.cardRandomRng).makeCopy();
+                AbstractCard c = AbstractDungeon.returnTrulyRandomCardInCombat(AbstractCard.CardType.POWER).makeCopy();
 
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
                 AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));

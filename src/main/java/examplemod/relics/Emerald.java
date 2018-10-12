@@ -32,7 +32,7 @@ public class Emerald extends AbstractRelic {
                 this.counter = 0;
                 this.flash();
                 AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                AbstractCard c = AbstractDungeon.returnTrulyRandomCard(AbstractCard.CardType.SKILL, AbstractDungeon.cardRandomRng).makeCopy();
+                AbstractCard c = AbstractDungeon.returnTrulyRandomCardInCombat(AbstractCard.CardType.SKILL).makeCopy();
 
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
                 AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));

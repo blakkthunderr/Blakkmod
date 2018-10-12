@@ -148,6 +148,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         //BASIC
         BaseMod.addCard(new DualStrike()); //Attack
         BaseMod.addCard(new GlassCannon()); //Attack
+        BaseMod.addCard(new SwordBurial()); //Skill
         BaseMod.addCard(new GlassHammer()); //Attack
         BaseMod.addCard(new CriticalStrike()); //Attack
         BaseMod.addCard(new LvlUp()); //Skill
@@ -156,6 +157,7 @@ public class ExampleMod implements PostExhaustSubscriber,
         BaseMod.addCard(new Bloodthirst()); //power
         BaseMod.addCard(new ThrowingArsenal()); //power
         BaseMod.addCard(new SmokeBomb()); //skill
+        BaseMod.addCard(new Corrode()); //skill
         BaseMod.addCard(new DeadlyAura()); //skill
 
         BaseMod.addCard(new Rust()); //curse
